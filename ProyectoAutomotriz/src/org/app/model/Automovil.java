@@ -64,4 +64,8 @@ public class Automovil {
     public void setBlue(int blue) {
         this.blue = blue;
     }
+
+    public Object getEstado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -28,7 +28,7 @@ public class Data {
         con.close();
     }
 
-    public List<Automovil> getAutomovil(String filtro) throws SQLException {
+    public List<Automovil> getAutomovil() throws SQLException {
         List<Automovil> lista = new ArrayList<>();
 
         String query = "SELECT * FROM automovil ORDER BY precio DESC;";
