@@ -39,13 +39,13 @@ public class Data {
             
             auto.setPatente(rs.getString(1));
             auto.setMarca(rs.getString(2));
-            auto.setEstado(true);
+            auto.setEstado(rs.getBoolean(3));
 //            ??
-            auto.setPrecio(0);
+            auto.setPrecio(rs.getLong(4));
             //???
-            auto.setRed(0);
-            auto.setGreen(0);
-            auto.setBlue(0);
+            auto.setRed(rs.getInt(5));
+            auto.setGreen(rs.getInt(6));
+            auto.setBlue(rs.getInt(7));
             
             lista.add(auto);
         }
