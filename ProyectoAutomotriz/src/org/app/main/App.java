@@ -1,5 +1,10 @@
 package org.app.main;
 
+import java.awt.EventQueue;
+import javax.swing.*;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -12,6 +17,8 @@ import org.app.model.tableModel.TMAutomoviles;
 public class App extends javax.swing.JFrame {
 
     private Data a;
+    private JPanel contentPane;
+
 
     public App() {
         initComponents();
@@ -77,6 +84,11 @@ public class App extends javax.swing.JFrame {
         jLabel5.setText("Color:");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/app/recursos/color.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         lblColor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -261,6 +273,10 @@ public class App extends javax.swing.JFrame {
         System.out.println("1");
     }//GEN-LAST:event_rbtnNuevoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jcolorChooser();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +350,13 @@ public class App extends javax.swing.JFrame {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private void jcolorChooser() { 
+        Color color = JColorChooser.showDialog(contentPane, "Elige un color", Color.BLACK);
+
+        lblColor.setBackground(color);
+        lblColor.setOpaque(true);
     }
 
 }
