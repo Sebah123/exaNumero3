@@ -340,6 +340,35 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField txtPatente;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
+    private void Registrar(){
+        String patente = txtPatente.getText();
+        String marca = cbMarca.getActionCommand();
+//        boolean estado = Boolean.getBoolean(rbtnNuevo.getActionCommand());???
+//        boolean estado = Boolean.getBoolean(rbtnUsado.getActionCommand());???
+        int precio = Integer.parseInt(txtPrecio.getText());
+//        int color = ????
+
+        Automovil auto = new Automovil();
+        
+        auto.setPatente(patente);
+        auto.setMarca(marca);
+        auto.setPrecio(precio);
+        
+        try{
+            a.RegistrarAutomovil(auto);
+        }catch(SQLException ex){
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        txtPatente.setText(null);
+       
+    }
+    
+    
+    
+    
+    
+    
+    
     private void cargarTablaAuto() {
 
         try {
