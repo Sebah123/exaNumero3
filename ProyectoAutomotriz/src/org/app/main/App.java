@@ -25,7 +25,7 @@ public class App extends javax.swing.JFrame {
             datos();
             a = new Data();
             estado = 0;
-
+            setContadores();
             setLocationRelativeTo(null);
             setTitle("Registro Automóviles");
         } catch (ClassNotFoundException ex) {
@@ -384,29 +384,10 @@ public class App extends javax.swing.JFrame {
     }
 
     private void Registrar() {
-        System.out.println(estado);
+        String patente, marca, precio;
         
-        
-        /*String patente = txtPatente.getText();
-        String marca = cbMarca.getActionCommand();
-//        boolean estado = Boolean.getBoolean(rbtnNuevo.getActionCommand());???
-//        boolean estado = Boolean.getBoolean(rbtnUsado.getActionCommand());???
-        int precio = Integer.parseInt(txtPrecio.getText());
-//        int color = ????
-
-        Automovil auto = new Automovil();
-
-        auto.setPatente(patente);
-        auto.setMarca(marca);
-        auto.setPrecio(precio);
-
-        try {
-            a.RegistrarAutomovil(auto);
-        } catch (SQLException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        txtPatente.setText(null);
-         */
+        patente = txtPatente.getText();
+        precio = txtPrecio.getText();
     }
 
     private void jcolorChooser() {
