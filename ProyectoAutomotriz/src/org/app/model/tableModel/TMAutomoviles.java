@@ -33,10 +33,10 @@ public class TMAutomoviles extends AbstractTableModel {
             case 1:
                 return a.getMarca();
             case 2:
-                if (a.getEstado() == false) {
+                if (a.getEstado() == 0) {
                     return "Usado";
                 }
-                if (a.getEstado() == true) {
+                if (a.getEstado() == 1) {
                     return "Nuevo";
                 }
             case 3:

@@ -15,15 +15,16 @@ import org.app.model.tableModel.TMAutomoviles;
 
 public class App extends javax.swing.JFrame {
 
-    private Data a;
+    private Data d;
     private JPanel contentPane;
-    private int estado;
+    private byte estado;
+
     public App() {
 
         try {
             initComponents();
             datos();
-            a = new Data();
+            d = new Data();
             estado = 0;
             setContadores();
             setLocationRelativeTo(null);
@@ -291,8 +292,8 @@ public class App extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnNuevoActionPerformed
-     estado = 1;
-        
+        estado = 1;
+
     }//GEN-LAST:event_rbtnNuevoActionPerformed
 
     private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
@@ -301,7 +302,7 @@ public class App extends javax.swing.JFrame {
 
     private void rbtnUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnUsadoActionPerformed
         estado = 0;
-        
+
     }//GEN-LAST:event_rbtnUsadoActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -374,7 +375,7 @@ public class App extends javax.swing.JFrame {
     private void cargarTablaAutos() {
 
         try {
-            List<Automovil> lista = a.getAutomovil();
+            List<Automovil> lista = d.getAutomovil();
             TMAutomoviles model = new TMAutomoviles(lista);
             tblDetallesAutos.setModel(model);
         } catch (SQLException ex) {
@@ -385,9 +386,29 @@ public class App extends javax.swing.JFrame {
 
     private void Registrar() {
         String patente, marca, precio;
-        
+        //obtengo
         patente = txtPatente.getText();
         precio = txtPrecio.getText();
+        System.out.println(estado);
+        //compruebo
+        if (!patente.trim().isEmpty() && !precio.trim().isEmpty()) {
+            Automovil a = new Automovil();
+            marca = cbMarca.getSelectedItem().toString();
+            a.setPatente(patente);
+            a.setPrecio(Long.parseLong(precio));
+            a.setMarca(marca);
+            a.setEstado(estado);
+            
+            try {
+                d.registrarAutomovil(a);
+            } catch (SQLException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            txtPatente.setText(null);
+            txtPrecio.setText(null);
+            pnlPrincipal.updateUI();
+        }
+
     }
 
     private void jcolorChooser() {
@@ -395,12 +416,13 @@ public class App extends javax.swing.JFrame {
 
         lblColor.setBackground(color);
         lblColor.setOpaque(true);
+        System.out.println(color);
     }
 
     private void setContadores() throws SQLException {
-        lblNumeroAutos.setText("" + a.getNumeroDeAutos() + "");
-        lblNumeroAutosUsados.setText("" + a.getNumeroDeAutosUsados() + "");
-        lblNumeroAutosNuevos.setText("" + a.getNumeroDeAutosNuevos() + "");
+        lblNumeroAutos.setText("" + d.getNumeroDeAutos() + "");
+        lblNumeroAutosUsados.setText("" + d.getNumeroDeAutosUsados() + "");
+        lblNumeroAutosNuevos.setText("" + d.getNumeroDeAutosNuevos() + "");
 
     }
 

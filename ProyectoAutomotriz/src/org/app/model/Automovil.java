@@ -3,7 +3,7 @@ package org.app.model;
 public class Automovil {
     private String patente;
     private String marca;
-    private Boolean estado;
+    private byte estado;
     private long precio;
     private int red;
     private int green;
@@ -25,11 +25,11 @@ public class Automovil {
         this.marca = marca;
     }
 
-    public Boolean getEstado() {
+    public byte getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(byte estado) {
         this.estado = estado;
     }
 

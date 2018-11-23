@@ -12,7 +12,7 @@ public class Data {
         con = new Conexion("prueba3_poo");
     }
 
-    public void RegistrarAutomovil(Automovil a) throws SQLException {
+    public void registrarAutomovil(Automovil a) throws SQLException {
         String insert = "INSERT INTO automovil VALUES"
                 + "('" + a.getPatente() + "',"
                 + "'" + a.getMarca() + "',"
@@ -36,7 +36,7 @@ public class Data {
             
             auto.setPatente(rs.getString(1));
             auto.setMarca(rs.getString(2));
-            auto.setEstado(rs.getBoolean(3));
+            auto.setEstado(rs.getByte(3));
 //            ??
             auto.setPrecio(rs.getLong(4));
             //???
