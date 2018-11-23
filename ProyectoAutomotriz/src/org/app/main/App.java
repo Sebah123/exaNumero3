@@ -20,7 +20,7 @@ public class App extends javax.swing.JFrame {
         try {
             initComponents();
             a = new Data();
-
+            
             setLocationRelativeTo(null);
             setTitle("Registro Automóviles");
         } catch (ClassNotFoundException ex) {
@@ -31,6 +31,8 @@ public class App extends javax.swing.JFrame {
         btngroupEstadoAuto.add(rbtnNuevo);
         btngroupEstadoAuto.add(rbtnUsado);
         cargarTablaAutos();
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -292,7 +294,7 @@ public class App extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -345,7 +347,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
     private void cargarTablaAutos() {
-        System.out.println("paso 1");
+        
         try {
             List<Automovil> lista = a.getAutomovil();
             TMAutomoviles model = new TMAutomoviles(lista);
@@ -385,5 +387,11 @@ public class App extends javax.swing.JFrame {
         lblColor.setBackground(color);
         lblColor.setOpaque(true);
     }
-
+    private void setContadores() throws SQLException{
+        lblNumeroAutos.setText(""+a.getNumeroDeAutos()+"");
+        lblNumeroAutosUsados.setText(""+a.getNumeroDeAutosUsados()+"");
+        lblNumeroAutosNuevos.setText(""+a.getNumeroDeAutosNuevos()+"");
+        
+    
+    }
 }
