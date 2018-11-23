@@ -53,12 +53,11 @@ public class Data {
     
     public int getNumeroDeAutos() throws SQLException{
      int contador = 0;
-     ResultSet rs = con.ejecutar("SELECT COUNT (0) FROM automovil");
+     ResultSet rs = con.ejecutar("SELECT COUNT(0) FROM automovil");
      if (rs.next()){
          contador = rs.getInt(1);
          System.out.println(contador);
      }
-     con.close();
      return contador;
     }
     public int getNumeroDeAutosUsados() throws SQLException{
@@ -68,7 +67,6 @@ public class Data {
             contador = rs.getInt(1);
             System.out.println("usados :"+contador);
         }
-        con.close();
         return contador;
     }
     public int getNumeroDeAutosNuevos() throws SQLException{
@@ -78,7 +76,6 @@ public class Data {
             contador = rs.getInt(1);
             System.out.println("nuevos: "+contador);
         }
-        con.close();
         return contador;
     }
 }

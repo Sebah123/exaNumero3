@@ -17,14 +17,15 @@ public class App extends javax.swing.JFrame {
 
     private Data a;
     private JPanel contentPane;
-
+    private int estado;
     public App() {
 
         try {
             initComponents();
             datos();
             a = new Data();
-            
+            estado = 0;
+
             setLocationRelativeTo(null);
             setTitle("Registro Automóviles");
         } catch (ClassNotFoundException ex) {
@@ -35,8 +36,7 @@ public class App extends javax.swing.JFrame {
         btngroupEstadoAuto.add(rbtnNuevo);
         btngroupEstadoAuto.add(rbtnUsado);
         cargarTablaAutos();
-        
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -56,9 +56,9 @@ public class App extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnColor = new javax.swing.JButton();
         lblColor = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDetallesAutos = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -88,15 +88,20 @@ public class App extends javax.swing.JFrame {
         });
 
         rbtnUsado.setText("Usado");
+        rbtnUsado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnUsadoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Precio: ");
 
         jLabel5.setText("Color:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/app/recursos/color.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/app/recursos/color.png"))); // NOI18N
+        btnColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnColorActionPerformed(evt);
             }
         });
 
@@ -112,7 +117,7 @@ public class App extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnColor, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblColor, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -157,12 +162,18 @@ public class App extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jButton2.setText("Registrar");
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/app/recursos/registrar.png"))); // NOI18N
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         tblDetallesAutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,7 +248,7 @@ public class App extends javax.swing.JFrame {
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -256,7 +267,7 @@ public class App extends javax.swing.JFrame {
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,12 +291,22 @@ public class App extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnNuevoActionPerformed
-        System.out.println("1");
+     estado = 1;
+        
     }//GEN-LAST:event_rbtnNuevoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
         jcolorChooser();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnColorActionPerformed
+
+    private void rbtnUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnUsadoActionPerformed
+        estado = 0;
+        
+    }//GEN-LAST:event_rbtnUsadoActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        Registrar();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,10 +344,10 @@ public class App extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnColor;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.ButtonGroup btngroupEstadoAuto;
     private javax.swing.JComboBox<String> cbMarca;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -351,7 +372,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
     private void cargarTablaAutos() {
-        
+
         try {
             List<Automovil> lista = a.getAutomovil();
             TMAutomoviles model = new TMAutomoviles(lista);
@@ -363,7 +384,10 @@ public class App extends javax.swing.JFrame {
     }
 
     private void Registrar() {
-        String patente = txtPatente.getText();
+        System.out.println(estado);
+        
+        
+        /*String patente = txtPatente.getText();
         String marca = cbMarca.getActionCommand();
 //        boolean estado = Boolean.getBoolean(rbtnNuevo.getActionCommand());???
 //        boolean estado = Boolean.getBoolean(rbtnUsado.getActionCommand());???
@@ -382,7 +406,7 @@ public class App extends javax.swing.JFrame {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
         txtPatente.setText(null);
-
+         */
     }
 
     private void jcolorChooser() {
@@ -391,28 +415,26 @@ public class App extends javax.swing.JFrame {
         lblColor.setBackground(color);
         lblColor.setOpaque(true);
     }
-    private void setContadores() throws SQLException{
-        lblNumeroAutos.setText(""+a.getNumeroDeAutos()+"");
-        lblNumeroAutosUsados.setText(""+a.getNumeroDeAutosUsados()+"");
-        lblNumeroAutosNuevos.setText(""+a.getNumeroDeAutosNuevos()+"");
-        
-    
+
+    private void setContadores() throws SQLException {
+        lblNumeroAutos.setText("" + a.getNumeroDeAutos() + "");
+        lblNumeroAutosUsados.setText("" + a.getNumeroDeAutosUsados() + "");
+        lblNumeroAutosNuevos.setText("" + a.getNumeroDeAutosNuevos() + "");
+
     }
-    private void datos(){
+
+    private void datos() {
         Properties prop = new Properties();
         InputStream input = null;
-            try {
-                input = new FileInputStream("./marca.txt");
-                prop.load(input);
-                String[] marca = prop.getProperty("marca").split(",");
-                
-                DefaultComboBoxModel dm = new DefaultComboBoxModel(marca);
-                cbMarca.setModel(dm);
-            } catch (Exception e) {
-            }
+        try {
+            input = new FileInputStream("./marca.txt");
+            prop.load(input);
+            String[] marca = prop.getProperty("marca").split(",");
+
+            DefaultComboBoxModel dm = new DefaultComboBoxModel(marca);
+            cbMarca.setModel(dm);
+        } catch (Exception e) {
+        }
     }
-    
+
 }
-
-
-
