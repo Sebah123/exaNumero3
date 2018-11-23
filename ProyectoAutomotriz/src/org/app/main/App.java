@@ -297,7 +297,15 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnNuevoActionPerformed
 
     private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
-        jcolorChooser();
+        Color color = JColorChooser.showDialog(contentPane, "Elige un color", Color.BLACK);
+
+        lblColor.setBackground(color);
+        lblColor.setOpaque(true);
+        System.out.println(color);
+
+        System.out.println("rojo  = " + color.getRed());
+        System.out.println("verde = " + color.getGreen());
+        System.out.println("azul = " + color.getBlue());
     }//GEN-LAST:event_btnColorActionPerformed
 
     private void rbtnUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnUsadoActionPerformed
@@ -398,7 +406,7 @@ public class App extends javax.swing.JFrame {
             a.setPrecio(Long.parseLong(precio));
             a.setMarca(marca);
             a.setEstado(estado);
-            
+
             try {
                 d.registrarAutomovil(a);
             } catch (SQLException ex) {
@@ -409,14 +417,6 @@ public class App extends javax.swing.JFrame {
             pnlPrincipal.updateUI();
         }
 
-    }
-
-    private void jcolorChooser() {
-        Color color = JColorChooser.showDialog(contentPane, "Elige un color", Color.BLACK);
-
-        lblColor.setBackground(color);
-        lblColor.setOpaque(true);
-        System.out.println(color);
     }
 
     private void setContadores() throws SQLException {
