@@ -16,7 +16,7 @@ public class Data {
         String insert = "INSERT INTO automovil VALUES"
                 + "('" + a.getPatente() + "',"
                 + "'" + a.getMarca() + "',"
-                + "'" + a.isEstado() + "',"
+                + "'" + a.getEstado() + "',"
                 + "'" + a.getPrecio() + "',"
                 + "'" + a.getRed() + "',"
                 + "'" + a.getGreen() + "',"
