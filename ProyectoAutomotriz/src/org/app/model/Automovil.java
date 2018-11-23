@@ -3,7 +3,7 @@ package org.app.model;
 public class Automovil {
     private String patente;
     private String marca;
-    private boolean estado;
+    private Boolean estado;
     private long precio;
     private int red;
     private int green;
@@ -25,11 +25,11 @@ public class Automovil {
         this.marca = marca;
     }
 
-    public boolean isEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 
@@ -65,7 +65,4 @@ public class Automovil {
         this.blue = blue;
     }
 
-    public Object getEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
