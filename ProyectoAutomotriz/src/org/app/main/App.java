@@ -1,11 +1,7 @@
 package org.app.main;
 
-import java.awt.EventQueue;
 import javax.swing.*;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -13,7 +9,6 @@ import java.util.logging.Logger;
 import org.app.model.Automovil;
 import org.app.model.Data;
 import org.app.model.tableModel.TMAutomoviles;
-
 
 public class App extends javax.swing.JFrame {
 
@@ -25,18 +20,17 @@ public class App extends javax.swing.JFrame {
         try {
             initComponents();
             a = new Data();
+
             setLocationRelativeTo(null);
-            btngroupEstadoAuto.add(rbtnNuevo);
-            btngroupEstadoAuto.add(rbtnUsado);
-            
-            cargarTablaAutos();
+            setTitle("Registro Automóviles");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-
+        btngroupEstadoAuto.add(rbtnNuevo);
+        btngroupEstadoAuto.add(rbtnUsado);
+        cargarTablaAutos();
     }
 
     @SuppressWarnings("unchecked")
@@ -350,20 +344,18 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField txtPatente;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
-    private void cargarTablaAutos(){
+    private void cargarTablaAutos() {
         System.out.println("paso 1");
         try {
-            System.out.println("paso2");
-            List<Automovil> list = a.getAutomovil();
-            TMAutomoviles model = new TMAutomoviles(list);
+            List<Automovil> lista = a.getAutomovil();
+            TMAutomoviles model = new TMAutomoviles(lista);
             tblDetallesAutos.setModel(model);
         } catch (SQLException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("gg clase 2");
         }
-    
+
     }
-    
-    
+
     private void Registrar() {
         String patente = txtPatente.getText();
         String marca = cbMarca.getActionCommand();
@@ -387,7 +379,6 @@ public class App extends javax.swing.JFrame {
 
     }
 
-   
     private void jcolorChooser() {
         Color color = JColorChooser.showDialog(contentPane, "Elige un color", Color.BLACK);
 
