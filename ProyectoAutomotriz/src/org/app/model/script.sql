@@ -6,7 +6,7 @@ CREATE TABLE automovil(
     patente VARCHAR(7),
     marca VARCHAR(100),
     estado BOOLEAN, -- true(nuevo) false(usado)
-    precio LONG,
+    precio BIGINT,
     red INT,
     green INT,
     blue INT,
