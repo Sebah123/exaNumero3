@@ -18,6 +18,7 @@ public class App extends javax.swing.JFrame {
     private Data d;
     private JPanel contentPane;
     private byte estado;
+    private int rojo, verde, azul;
 
     public App() {
 
@@ -298,14 +299,14 @@ public class App extends javax.swing.JFrame {
 
     private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
         Color color = JColorChooser.showDialog(contentPane, "Elige un color", Color.BLACK);
-
+        
         lblColor.setBackground(color);
         lblColor.setOpaque(true);
         System.out.println(color);
 
-        System.out.println("rojo  = " + color.getRed());
-        System.out.println("verde = " + color.getGreen());
-        System.out.println("azul = " + color.getBlue());
+        rojo = color.getRed();
+        verde = color.getGreen();
+        azul = color.getBlue();
     }//GEN-LAST:event_btnColorActionPerformed
 
     private void rbtnUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnUsadoActionPerformed
@@ -406,6 +407,15 @@ public class App extends javax.swing.JFrame {
             a.setPrecio(Long.parseLong(precio));
             a.setMarca(marca);
             a.setEstado(estado);
+            a.setRed(rojo);
+            a.setGreen(verde);
+            a.setBlue(azul);
+            
+            /*
+            color.getRed());
+            color.getGreen());
+            color.getBlue());
+            */
 
             try {
                 d.registrarAutomovil(a);
@@ -415,6 +425,7 @@ public class App extends javax.swing.JFrame {
             txtPatente.setText(null);
             txtPrecio.setText(null);
             pnlPrincipal.updateUI();
+            cargarTablaAutos();
         }
 
     }
