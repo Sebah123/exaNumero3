@@ -5,28 +5,30 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.app.model.Automovil;
-import org.app.model.Conexion;
 import org.app.model.Data;
 import org.app.model.tableModel.TMAutomoviles;
+
 
 public class App extends javax.swing.JFrame {
 
     private Data a;
     private JPanel contentPane;
 
-
     public App() {
-        initComponents();
 
+        initComponents();
         btngroupEstadoAuto.add(rbtnNuevo);
         btngroupEstadoAuto.add(rbtnUsado);
         setLocationRelativeTo(null);
-        //cargarTablaAuto();
+        //cargarTablaAutos();
+    
+
     }
 
     @SuppressWarnings("unchecked")
@@ -340,7 +342,19 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField txtPatente;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
-    private void Registrar(){
+    private void cargarTablaAutos(){
+        try {
+            List<Automovil> list = a.getAutomovil();
+            TMAutomoviles model = new TMAutomoviles(list);
+            tblDetallesAutos.setModel(model);
+        } catch (SQLException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
+    
+    private void Registrar() {
         String patente = txtPatente.getText();
         String marca = cbMarca.getActionCommand();
 //        boolean estado = Boolean.getBoolean(rbtnNuevo.getActionCommand());???
@@ -349,39 +363,22 @@ public class App extends javax.swing.JFrame {
 //        int color = ????
 
         Automovil auto = new Automovil();
-        
+
         auto.setPatente(patente);
         auto.setMarca(marca);
         auto.setPrecio(precio);
-        
-        try{
-            a.RegistrarAutomovil(auto);
-        }catch(SQLException ex){
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE,null,ex);
-        }
-        txtPatente.setText(null);
-       
-    }
-    
-    
-    
-    
-    
-    
-    
-    private void cargarTablaAuto() {
 
         try {
-            List<Automovil> lista = a.getAutomovil();
-            TMAutomoviles model = new TMAutomoviles(lista);
-            tblDetallesAutos.setModel(model);
+            a.RegistrarAutomovil(auto);
         } catch (SQLException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
+        txtPatente.setText(null);
 
     }
 
-    private void jcolorChooser() { 
+   
+    private void jcolorChooser() {
         Color color = JColorChooser.showDialog(contentPane, "Elige un color", Color.BLACK);
 
         lblColor.setBackground(color);
