@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import org.app.model.Conexion;
 
 public class Data {
 
@@ -28,24 +27,25 @@ public class Data {
     }
 
     public List<Automovil> getAutomovil() throws SQLException {
-        List<Automovil> lista = new ArrayList<>();
-
-        String query = "SELECT * FROM automovil ORDER BY precio DESC;";
+        List<Automovil> lista = new ArrayList<>();  
+        
+        String query = "SELECT * FROM automovil ORDER BY precio DESC";
         ResultSet rs = con.ejecutar(query);
 
         while (rs.next()) {
             Automovil auto = new Automovil();
             
-            auto.setPatente(rs.getString("patente"));
-            auto.setMarca(rs.getString("marca"));
-            auto.setEstado(rs.getBoolean("estado"));
+            auto.setPatente(rs.getString(1));
+            auto.setMarca(rs.getString(2));
+            auto.setEstado(rs.getBoolean(3));
 //            ??
-            auto.setPrecio(rs.getLong("precio"));
+            auto.setPrecio(rs.getLong(4));
             //???
-            auto.setRed(rs.getInt("red"));
-            auto.setGreen(rs.getInt("green"));
-            auto.setBlue(rs.getInt("blue"));
+            auto.setRed(rs.getInt(5));
+            auto.setGreen(rs.getInt(6));
+            auto.setBlue(rs.getInt(7));
             
+            lista.add(auto);
             
         }
         con.close();

@@ -22,11 +22,19 @@ public class App extends javax.swing.JFrame {
 
     public App() {
 
-        initComponents();
-        btngroupEstadoAuto.add(rbtnNuevo);
-        btngroupEstadoAuto.add(rbtnUsado);
-        setLocationRelativeTo(null);
-        //cargarTablaAutos();
+        try {
+            initComponents();
+            a = new Data();
+            setLocationRelativeTo(null);
+            btngroupEstadoAuto.add(rbtnNuevo);
+            btngroupEstadoAuto.add(rbtnUsado);
+            
+            cargarTablaAutos();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
 
     }
@@ -343,7 +351,9 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
     private void cargarTablaAutos(){
+        System.out.println("paso 1");
         try {
+            System.out.println("paso2");
             List<Automovil> list = a.getAutomovil();
             TMAutomoviles model = new TMAutomoviles(list);
             tblDetallesAutos.setModel(model);
