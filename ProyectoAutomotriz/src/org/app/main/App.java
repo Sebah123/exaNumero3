@@ -2,8 +2,11 @@ package org.app.main;
 
 import javax.swing.*;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.app.model.Automovil;
@@ -19,6 +22,7 @@ public class App extends javax.swing.JFrame {
 
         try {
             initComponents();
+            datos();
             a = new Data();
             
             setLocationRelativeTo(null);
@@ -394,4 +398,21 @@ public class App extends javax.swing.JFrame {
         
     
     }
+    private void datos(){
+        Properties prop = new Properties();
+        InputStream input = null;
+            try {
+                input = new FileInputStream("./marca.txt");
+                prop.load(input);
+                String[] marca = prop.getProperty("marca").split(",");
+                
+                DefaultComboBoxModel dm = new DefaultComboBoxModel(marca);
+                cbMarca.setModel(dm);
+            } catch (Exception e) {
+            }
+    }
+    
 }
+
+
+
