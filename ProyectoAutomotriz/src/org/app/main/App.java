@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.scene.paint.Color.color;
 import org.app.model.Automovil;
 import org.app.model.Data;
 import org.app.model.tableModel.TMAutomoviles;
@@ -72,6 +73,12 @@ public class App extends javax.swing.JFrame {
         lblNumeroAutosNuevos = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        lblPatente = new javax.swing.JLabel();
+        lblMarca = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
+        lblPrecio = new javax.swing.JLabel();
+        jLabel = new javax.swing.JLabel();
+        lblColor2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -246,15 +253,47 @@ public class App extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ultimo registro"));
 
+        lblPatente.setText("Patente:");
+
+        lblMarca.setText("Marca:");
+
+        lblEstado.setText("Estado:");
+
+        lblPrecio.setText("precio:");
+
+        jLabel.setText("color:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 164, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblColor2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+            .addComponent(lblPatente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblPatente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMarca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblEstado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPrecio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblColor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(11, 11, 11))
         );
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
@@ -323,6 +362,8 @@ public class App extends javax.swing.JFrame {
 
         lblColor.setBackground(color);
         lblColor.setOpaque(true);
+        lblColor2.setBackground(color);
+        lblColor2.setOpaque(true);
         System.out.println(color);
 
         rojo = color.getRed();
@@ -337,6 +378,8 @@ public class App extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         Registrar();
+        
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
@@ -379,6 +422,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.ButtonGroup btngroupEstadoAuto;
     private javax.swing.JComboBox<String> cbMarca;
+    private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -393,9 +437,14 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblColor;
+    private javax.swing.JLabel lblColor2;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblNumeroAutos;
     private javax.swing.JLabel lblNumeroAutosNuevos;
     private javax.swing.JLabel lblNumeroAutosUsados;
+    private javax.swing.JLabel lblPatente;
+    private javax.swing.JLabel lblPrecio;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JRadioButton rbtnNuevo;
     private javax.swing.JRadioButton rbtnUsado;
@@ -442,7 +491,18 @@ public class App extends javax.swing.JFrame {
             }
             txtPatente.setText(null);
             txtPrecio.setText(null);
+               
+            lblPatente.setText(patente);
+            lblMarca.setText(marca);
+            if (estado == 0) {
+                lblEstado.setText("Usado");
+            }else{
+                lblEstado.setText("Nuevo");
+            }
+            lblPrecio.setText(precio);
+            
             pnlPrincipal.updateUI();
+         
             cargarTablaAutos();
         }
     }
