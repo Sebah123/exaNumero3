@@ -26,7 +26,7 @@ public class TMAutomoviles extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Automovil a = lista.get(rowIndex);
-        long num = 0;
+        
         switch (columnIndex) {
             case 0:
                 return a.getPatente();
