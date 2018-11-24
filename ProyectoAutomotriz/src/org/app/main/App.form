@@ -413,22 +413,45 @@
                       <Component id="lblColor2" pref="123" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblPatente" max="32767" attributes="0"/>
-                  <Component id="lblMarca" alignment="0" max="32767" attributes="0"/>
-                  <Component id="lblEstado" max="32767" attributes="0"/>
-                  <Component id="lblPrecio" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel10" max="32767" attributes="0"/>
+                          <Component id="jLabel11" max="32767" attributes="0"/>
+                          <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblPrecio" alignment="1" pref="91" max="32767" attributes="0"/>
+                          <Component id="lblEstado" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblMarca" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblPatente" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblPatente" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel10" max="32767" attributes="0"/>
+                          <Component id="lblPatente" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblMarca" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel11" max="32767" attributes="0"/>
+                          <Component id="lblMarca" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel12" max="32767" attributes="0"/>
+                          <Component id="lblEstado" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel13" max="32767" attributes="0"/>
+                          <Component id="lblPrecio" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -444,24 +467,12 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblPatente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Patente:"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblMarca">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Marca:"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblEstado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Estado:"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblPrecio">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="precio:"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel">
               <Properties>
@@ -469,6 +480,26 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblColor2">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Patente:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Marca:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel12">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Estado:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel13">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Precio:"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
