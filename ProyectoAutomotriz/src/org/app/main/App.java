@@ -13,6 +13,8 @@ import static javafx.scene.paint.Color.color;
 import org.app.model.Automovil;
 import org.app.model.Data;
 import org.app.model.tableModel.TMAutomoviles;
+//importacion de libreria
+import Atxy2k.CustomTextField.RestrictedTextField;
 
 public class App extends javax.swing.JFrame {
 
@@ -31,6 +33,7 @@ public class App extends javax.swing.JFrame {
             setContadores();
             setLocationRelativeTo(null);
             setTitle("Registro Automóviles");
+            restriccion();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -549,6 +552,15 @@ public class App extends javax.swing.JFrame {
             cbMarca.setModel(dm);
         } catch (Exception e) {
         }
+    }
+
+    private void restriccion() {
+        RestrictedTextField restriPatente = new RestrictedTextField(txtPatente);
+        RestrictedTextField restriPrecio = new RestrictedTextField(txtPrecio);
+        restriPatente.setLimit(7);
+        restriPrecio.setLimit(18);
+        restriPrecio.setOnlyNums(true);
+ 
     }
 
 }
