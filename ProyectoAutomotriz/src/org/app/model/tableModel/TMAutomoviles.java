@@ -41,7 +41,7 @@ public class TMAutomoviles extends AbstractTableModel {
                 }
             case 3:
                 DecimalFormat formateador = new DecimalFormat("###,###.##");
-                
+
                 return "$ "+(formateador.format(a.getPrecio()));
             default:
                 return a.getRed() + "," + a.getGreen() + "," + a.getBlue();

@@ -377,9 +377,13 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnUsadoActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        Registrar();
-        
-        
+        try {
+            Registrar();
+        } catch (SQLException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
@@ -464,7 +468,7 @@ public class App extends javax.swing.JFrame {
 
     }
 
-    private void Registrar() {
+    private void Registrar() throws SQLException {
         String patente, marca, precio;
         //obtengo
         patente = txtPatente.getText();
@@ -481,28 +485,23 @@ public class App extends javax.swing.JFrame {
             a.setRed(rojo);
             a.setGreen(verde);
             a.setBlue(azul);
-        
-            try {
-                d.registrarAutomovil(a);
 
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Faltan Datos");
+            d.registrarAutomovil(a);
 
-            }
             txtPatente.setText(null);
             txtPrecio.setText(null);
-               
+
             lblPatente.setText(patente);
             lblMarca.setText(marca);
             if (estado == 0) {
                 lblEstado.setText("Usado");
-            }else{
+            } else {
                 lblEstado.setText("Nuevo");
             }
             lblPrecio.setText(precio);
-            
+
             pnlPrincipal.updateUI();
-         
+
             cargarTablaAutos();
         }
     }
