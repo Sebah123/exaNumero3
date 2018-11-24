@@ -1,0 +1,9 @@
+añadir la libreria adjunta("Atxy2k.jar")
+
+Mejoras:
+
+1.-cuadro resumen de la ultimo registro
+
+2.-limite en los caracteres ingresados en patente y precio
+
+3.-limite a un tipo de caracter especial en precio
